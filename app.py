@@ -9,9 +9,12 @@ PATH_FILE=getcwd()+"/files/"
 
 app= Flask(__name__)
 
-@app.route('/unico')
+@app.route('/unico',methods=["POST"])
 def hello():
-    resultado=int(ia_funcional(4,55,"nino"))
+    peso=request.json['peso']
+    talla=request.json['talla']
+    genero=request.json['genero']
+    resultado=int(ia_funcional(peso,talla,genero))
     return jsonify({"resultado":resultado})
     
 
@@ -20,9 +23,10 @@ def hello():
 @app.route('/multi', methods=["POST"])
 def hacer_multi():
     archivo=request.files["file"]
-    archivo.save(PATH_FILE + archivo.filename)
+    url=PATH_FILE + archivo.filename
+    archivo.save(url)
 
-    
+    llamar(url)
     return "se ejecuto"
 
 

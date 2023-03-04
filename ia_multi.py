@@ -6,7 +6,7 @@ from sklearn.metrics import adjusted_rand_score
 from sklearn import preprocessing
 import json
 
-dataset=pd.read_excel("data_UDS.xlsx")
+
 
 
 def ia_funcional(dataset,tipo):
@@ -54,7 +54,8 @@ def ia_funcional(dataset,tipo):
     return(df)
 
 
-def llamar():
+def llamar(url):
+    dataset=pd.read_excel(f"{url}")
     valoracion_ninas=ia_funcional(dataset,"ninas")
     valoracion_ninos=ia_funcional(dataset,"ninos")
 
@@ -66,8 +67,9 @@ def llamar():
     resultado_total.valoracion=resultado_total.valoracion.replace(["4:Obesidad"],["Obesidad"])
     resultado_total.valoracion=resultado_total.valoracion.replace(["5:Riesgo de Sobrepeso"],["Riesgo de Sobrepeso"])
     resultado_total.valoracion=resultado_total.valoracion.replace(["6:Sobrepeso"],["Sobrepeso"])
-
+    
     resultado_total=resultado_total.sort_values(by=["id"],ascending=[True])
+    resultado_total=resultado_total.drop(["id"],axis=1)
     resultado_total.head()
 
-    resultado_total.to_excel("peso_talla_completo.xlsx",index=False)
+    resultado_total.to_json("peso_talla_completo.json")
