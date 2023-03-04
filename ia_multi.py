@@ -72,4 +72,4 @@ def llamar(url):
     resultado_total=resultado_total.drop(["id"],axis=1)
     resultado_total.head()
 
-    resultado_total.to_json("peso_talla_completo.json")
+    resultado_total.to_json("peso_talla_completo.json",orient = "records", date_format = "epoch", double_precision = 10, force_ascii = True, date_unit = "ms", default_handler = None)
