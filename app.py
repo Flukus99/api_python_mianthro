@@ -12,7 +12,7 @@ app= Flask(__name__)
 def index():
     return 'el servidor esta funcionando'
 
-    
+
 @app.route('/unico',methods=["POST"])
 def hello():
     peso=request.json['peso']
@@ -33,10 +33,10 @@ def hacer_multi():
     llamar(url)
     return "se ejecuto"
 
-
+port=os.environ.get("PORT",5000)    
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=False, host="0.0.0.0", port=port)
 
 
 
