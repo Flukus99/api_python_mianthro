@@ -8,7 +8,9 @@ from os import getcwd
 PATH_FILE=getcwd()+"/files/"
 
 app= Flask(__name__)
-
+@app.route('/')
+def index():
+    return 'el servidor esta funcionando'
 @app.route('/unico',methods=["POST"])
 def hello():
     peso=request.json['peso']
@@ -32,7 +34,7 @@ def hacer_multi():
 
 
 if __name__=='__main__':
-    app.run(debug=True, port=4000)
+    app.run()
 
 
 
