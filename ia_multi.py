@@ -54,7 +54,7 @@ def ia_funcional(dataset,tipo):
     return(df)
 
 
-def llamar(url):
+def llamar(url,token):
     dataset=pd.read_excel(f"{url}")
     valoracion_ninas=ia_funcional(dataset,"ninas")
     valoracion_ninos=ia_funcional(dataset,"ninos")
@@ -72,4 +72,4 @@ def llamar(url):
     resultado_total=resultado_total.drop(["id"],axis=1)
     resultado_total.head()
 
-    resultado_total.to_json("peso_talla_completo.json",orient = "records", date_format = "epoch", double_precision = 10, force_ascii = True, date_unit = "ms", default_handler = None)
+    resultado_total.to_json(f"{token}.json",orient = "records", date_format = "epoch", double_precision = 10, force_ascii = True, date_unit = "ms", default_handler = None)
