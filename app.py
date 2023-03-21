@@ -36,8 +36,10 @@ def hacer_multi(token):
     archivo.save(url)
 
     llamar(url,token)
-    return send_from_directory(PATH_FILE2,token+".json",as_attachment=True)
- 
+    try:
+        return send_from_directory(PATH_FILE2,token+".json",as_attachment=True)
+    except:
+        return jsonify({"error":"Aalgo salio mal, Revisa el documento y sus columnas"})  
 
 @app.route('/multi_delete/<string:token>', methods=["DELETE"])
 def delete_data(token):

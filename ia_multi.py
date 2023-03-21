@@ -16,16 +16,16 @@ def ia_funcional(dataset,tipo):
       y=data.valoracion
       x.head()
       prueba=dataset
-      muestreo=prueba[prueba["sexo"]=="M"]
-      prueba1=muestreo.drop(["nombre","id","sexo"],axis=1)
+      muestreo=prueba[prueba["genero"]=="M"]
+      prueba1=muestreo.drop(["nombre","id","genero"],axis=1)
     else:
       data=pd.read_csv("peso_talla_ninas.csv")
       x=data.drop(["valoracion"],axis=1)
       y=data.valoracion
       x.head()
       prueba=dataset
-      muestreo=prueba[prueba["sexo"]=="F"]
-      prueba1=muestreo.drop(["nombre","id","sexo"],axis=1)
+      muestreo=prueba[prueba["genero"]=="F"]
+      prueba1=muestreo.drop(["nombre","id","genero"],axis=1)
 
 
     
