@@ -31,12 +31,13 @@ def hello():
 
 @app.route('/multi/<string:token>', methods=["POST"])
 def hacer_multi(token):
-    archivo=request.files["file"]
-    url=PATH_FILE + token +".xlsx"
-    archivo.save(url)
+    
 
     
     try:
+        archivo=request.files["file"]
+        url=PATH_FILE + token +".xlsx"
+        archivo.save(url)
         llamar(url,token)
         return send_from_directory(PATH_FILE2,token+".json",as_attachment=True)
     except:
