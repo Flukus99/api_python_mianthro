@@ -35,8 +35,9 @@ def hacer_multi(token):
     url=PATH_FILE + token +".xlsx"
     archivo.save(url)
 
-    llamar(url,token)
+    
     try:
+        llamar(url,token)
         return send_from_directory(PATH_FILE2,token+".json",as_attachment=True)
     except:
         return jsonify({"error":"Aalgo salio mal, Revisa el documento y sus columnas"})  
