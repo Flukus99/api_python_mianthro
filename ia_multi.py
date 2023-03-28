@@ -17,7 +17,7 @@ def ia_funcional(dataset,tipo):
       x.head()
       prueba=dataset
       muestreo=prueba[prueba["genero"]=="M"]
-      prueba1=muestreo.drop(["nombre","id","genero"],axis=1)
+      prueba1=muestreo.drop(["nombre","id","genero","registro civil"],axis=1)
     else:
       data=pd.read_csv("peso_talla_ninas.csv")
       x=data.drop(["valoracion"],axis=1)
