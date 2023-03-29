@@ -52,7 +52,7 @@ def delete_data(token):
     else:
         remove(PATH_FILE + token +".xlsx")
         remove(PATH_FILE2 +"/"+ token+".json")
-        return("archivos eliminados con exito")
+        return jsonify({"message":"archivos eliminados con exito"})
 
     
 
